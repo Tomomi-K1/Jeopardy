@@ -20,7 +20,7 @@ let categories = [];
         //    },
         //    ...
         //  ]
-let numOfCateg = 30;
+let numOfCateg = 100;
 
 //********Selected Elements*********//
 const $startBtn = $('#startBtn');
@@ -79,13 +79,13 @@ async function getCategory(catId) {
         // }
     }
     
-    const fiveCluesArray =_.sampleSize(cluesArray, 5);
-    // let NotValidClues = fiveCluesArray.some(x => x.question === '=');
-    // if(NotValidClues){
-    //     fiveCluesArray = [];
-    //     fiveClueArray =_.sampleSize(cluesArray, 5);
+    let fiveCluesArray =_.sampleSize(cluesArray, 5);
+    let NotValidClues = fiveCluesArray.some(x => x.question === '=' || x.answer === '=');
+    if(NotValidClues){
+        fiveCluesArray = [];
+        fiveCluesArray =_.sampleSize(cluesArray, 5);
 
-    // }
+    }
 
     return {title: response.data.title, clues:fiveCluesArray};
     
@@ -93,6 +93,8 @@ async function getCategory(catId) {
 
 
 async function fillTable() {
+
+    
     /** Fill the HTML table#jeopardy with the categories & cells for questions.
      *
      * - The <thead> should be filled w/a <tr>, and a <td> for each category
@@ -140,6 +142,8 @@ async function fillTable() {
    $gameTable.append($wholeTable);
    $(".clue").hide();
    $('.answer').hide();
+
+//    hideLoadingView();
    
 
 }
@@ -191,6 +195,7 @@ function showLoadingView() {
     $gameTable.hide();
     //stwch startBtn test to "loading"
     $startBtn.text("Loading...");
+    $('.loader').css('display', 'flex');
 
 }
 
@@ -199,6 +204,7 @@ function showLoadingView() {
 function hideLoadingView() {
     /** Remove the loading spinner and update the button used to fetch data. */
     $startBtn.text("Restart");
+    $('.loader').hide();
 
 }
 
@@ -211,6 +217,7 @@ async function setupAndStart() {
      * - get data for each category
      * - create HTML table
      * */
+    showLoadingView()
     categoryIds = [];
     categories =[]; //clear categories
     $gameTable.empty(); // clear the table to start fresh
@@ -221,7 +228,7 @@ async function setupAndStart() {
         categories.push(obj);
      }
      
-     showLoadingView()
+     
      fillTable()
      hideLoadingView()
      $gameTable.show();
@@ -235,21 +242,7 @@ $startBtn.on('click', setupAndStart);
 // TODO
 
 /** On page load, add event handler for clicking clues */
+
 $('body').on('click', 'td', handleClick);
 // TODO
 
-/* <td id="1-0">
-<p class="questionMark">?</p>
-<p class="clue">${categories[1].clues[0].question}</p>
-<p class="answer">${categories[1].clues[0].answer}</p> 
-</td>
-<td id="2-0">
-<p class="questionMark">?</p>
-<p class="clue">${categories[2].clues[0].question}</p>
-<p class="answer">${categories[2].clues[0].answer}</p> 
-</td>
-<td id="3-0"><p class="questionMark">?</p></td>
-<td id="4-0"><p class="questionMark">?</p></td>
-<td id="5-0"><p class="questionMark">?</p></td>
-
-</tr> */

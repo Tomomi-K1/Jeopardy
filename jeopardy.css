@@ -16,7 +16,7 @@ body{
 h1{
   width: 100%;
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
 }
 
@@ -29,9 +29,20 @@ h1{
 }
 
 #startBtn {
-  width: auto;
+  width: 10em;
   font-size: 1.5rem;
   padding: 10px;
+  background-color:white;
+  box-shadow: black 4px 4px 0 0,black 4px 4px 0 1px;
+  box-sizing: border-box;
+  border-top: solid 0.5px grey;
+  border-left: solid 0.5px grey;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  overflow: visible;
+  color: black;
+
 }
 
 table, th, td{
@@ -55,7 +66,7 @@ p{
 }
 
 p.questionMark{
-  font-size: 1.2rem;
+  font-size: 2.5rem;
 }
 
 p.clue{
@@ -65,3 +76,68 @@ p.clue{
 p.answer{
   font-size: 0.75rem;
 }
+
+/*==== loading spinner=== */
+/* by Angela Delise https://www.youtube.com/watch?v=zAbnlisUFZE*/
+
+.loader {
+  margin-top: 50px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.loader div{
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+  /* background-color: grey; */
+  /* border: 2px solid grey; */
+  border-radius: 50%;
+  animation: scaling 3s  infinite;
+}
+
+.hidden{
+  display: none;
+}
+
+@keyframes scaling {
+  0%, 100%{
+    /* opacity: 100%; */
+    transform:scale(0.2);
+    background-color: darkblue;
+  }
+
+  50%{
+    /* opacity: 0%; */
+    transform:scale(1);
+    background-color:skyblue;
+  }
+}
+
+div:nth-child(0){
+  animation-delay: 0s;
+}
+div:nth-child(1){
+  animation-delay: 0.2s;
+}
+div:nth-child(2){
+  animation-delay: 0.4s;
+}
+div:nth-child(3){
+  animation-delay: 0.6s;
+}
+div:nth-child(4){
+  animation-delay: 0.8s;
+}
+div:nth-child(5){
+  animation-delay: 1s;
+}
+div:nth-child(6){
+  animation-delay: 1.2s;
+}
+
+
+
