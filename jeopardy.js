@@ -20,7 +20,7 @@ let categories = [];
         //    },
         //    ...
         //  ]
-let numOfCateg = 100;
+let numOfCateg = 30;
 
 //********Selected Elements*********//
 const $startBtn = $('#startBtn');
