@@ -70,11 +70,11 @@ p.questionMark{
 }
 
 p.clue{
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 p.answer{
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 /*==== loading spinner=== */
