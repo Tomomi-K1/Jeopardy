@@ -35,7 +35,7 @@ async function getCategoryIds(){
     */
 
     console.debug('getCategoryIds');
-    const response = await axios.get(`http://jservice.io/api/categories?count=${numOfCateg}`);
+    const response = await axios.get(`https://jservice.io/api/categories?count=${numOfCateg}`);
     console.log(response.data);
     const categWithClue = response.data.filter(c => c.clues_count > 6);
     console.log("categWithClue", categWithClue);
@@ -66,7 +66,7 @@ async function getCategory(catId) {
      *      ...
      *   ]
      */
-    const response = await axios.get(`http://jservice.io/api/category?id=${catId}`);
+    const response = await axios.get(`https://jservice.io/api/category?id=${catId}`);
     const {clues}=response.data;
     const cluesArray = [];
 
